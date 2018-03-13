@@ -1,0 +1,68 @@
+{
+    "commodule":{	
+		"basecom": [
+			{"components_path":"libinfoanalysis.so","clsidinclude":
+								[
+									{
+										"clsid":"{E2C3154C-AFC7-4875-8BCC-CB116CA0CF45}",
+										"name":"json",
+										"start":"2",
+										"ui":"0",		
+										"param":"dateui2.res"
+									}
+								]
+			},
+			{"components_path":"libasynio.so","clsidinclude":
+								[
+									{
+										"clsid":"{B6DDB9B0-186F-4199-A0B3-7BA5026F5888}",
+										"name":"asynio",
+										"start":"3",
+										"ui":"0",
+										"param":"dateui2.res"
+									}
+								]
+			},
+			{"components_path":"libsshchannel.so","clsidinclude":
+							[
+								{
+									"clsid":"{4A27FA11-BEA7-46E8-9F32-EC0C9F6E1A9E}",
+									"name":"sshchannel",
+									"start":"10",
+									"ui":"0",
+									"param":"dateui2.res"
+								}
+							]
+			}
+		],
+		"maincom":
+			{"components_path":"libcomenv.so","clsidinclude":
+							[
+								{
+									"clsid":"{C8CA7580-8E65-49e6-A66A-B087C7EF523D}",
+									"name":"main",							
+									"start":"1",
+									"ui":"0",
+									"param":"dateui2.res"
+										
+								}
+							]
+			}
+			
+		},
+	"projectsetting":{	
+		"mutexlock": 2,
+		"config":[{"data": "data.dat","txt":1},{"configfile":"config.dat","sql":1}],
+		"srv":[{"srvname":"update"},{"system":"win"}],
+		"number": 123,
+		"argc":4,
+		"argv":[{"argv":"1"},{"argv":"2"},{"argv":"3"},{"argv":"4"}],
+		"updateurl":"http://localhost//Update.json",
+		"lookafter":"1.exe",
+		"product":"talkroom",
+		"exittime":400000,
+		"permission": "min",
+		"username":"local"
+		}
+	
+}

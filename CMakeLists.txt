@@ -1,0 +1,52 @@
+project(mainapp)
+
+cmake_minimum_required(VERSION 2.8)
+
+if(CMAKE_BUILD_TYPE STREQUAL Release)
+    set(CMAKE_BUILD_TYPE Release)
+	message("Release Compile Project")
+
+	set(by3rd_library_output 	"${PROJECT_SOURCE_DIR}/3rd/lib" 				CACHE INTERNAL "3rd Library" )
+	set(by3rd_library_execute   "${PROJECT_SOURCE_DIR}/3rdexecute/release" 		CACHE INTERNAL "3rd execute" )
+else()
+	set(CMAKE_BUILD_TYPE Debug)
+	add_definitions(-DDEBUG)
+	message("Debug Compile Project")
+
+	set(by3rd_library_output 	"${PROJECT_SOURCE_DIR}/3rd/lib" 				CACHE INTERNAL "3rd Library" )
+	set(by3rd_library_execute   "${PROJECT_SOURCE_DIR}/3rd/3rdexecute/debug" 	CACHE INTERNAL "3rd execute" )
+endif()
+
+set(by3rd_library_include   	"${PROJECT_SOURCE_DIR}/3rd/include" 			CACHE INTERNAL "3rd include" )
+set(bycom 				    	"${PROJECT_SOURCE_DIR}" 				        CACHE INTERNAL "bycom" )
+
+
+if (CMAKE_SYSTEM_NAME MATCHES "Android")
+	add_definitions("-DANDROID")
+	set(UNIX_OS true)
+elseif (CMAKE_SYSTEM_NAME MATCHES "Linux")
+	set(UNIX_OS true)
+elseif (CMAKE_SYSTEM_NAME MATCHES "Darwin")
+	set(UNIX_OS true)
+elseif (CMAKE_SYSTEM_NAME MATCHES "FreeBSD")
+	set(UNIX_OS true)
+elseif (CMAKE_SYSTEM_NAME MATCHES "Windows")
+	set(WIN_OS true)
+else()
+	message(FATAL_ERROR "unknown CMAKE_SYSTEM_NAME=${CMAKE_SYSTEM_NAME}")
+endif()
+
+
+message("lbycom Info")
+message("-- lbycom System = ${CMAKE_SYSTEM_NAME}")
+message("-- lbycom Compile = ${CMAKE_BUILD_TYPE}")
+add_subdirectory(main)
+add_subdirectory(comenv)
+add_subdirectory(infoanalysis)
+add_subdirectory(asynio)
+add_subdirectory(sshchannel)
+#add_subdirectory(adapterjs)
+#add_subdirectory(adapterlua)
+#add_subdirectory(adapterpy)
+#add_subdirectory(mempool)
+#add_subdirectory(adapters)
